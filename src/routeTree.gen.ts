@@ -12,6 +12,15 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as DashboardTrajetsRouteImport } from './routes/dashboard.trajets'
+import { Route as DashboardStationsRouteImport } from './routes/dashboard.stations'
+import { Route as DashboardLignesRouteImport } from './routes/dashboard.lignes'
+import { Route as DashboardIncidentsRouteImport } from './routes/dashboard.incidents'
+import { Route as DashboardHorairesRouteImport } from './routes/dashboard.horaires'
+import { Route as DashboardEtudiantsRouteImport } from './routes/dashboard.etudiants'
+import { Route as DashboardBusRouteImport } from './routes/dashboard.bus'
+import { Route as DashboardAffectationsRouteImport } from './routes/dashboard.affectations'
 
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
@@ -28,35 +37,142 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardTrajetsRoute = DashboardTrajetsRouteImport.update({
+  id: '/trajets',
+  path: '/trajets',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardStationsRoute = DashboardStationsRouteImport.update({
+  id: '/stations',
+  path: '/stations',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardLignesRoute = DashboardLignesRouteImport.update({
+  id: '/lignes',
+  path: '/lignes',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardIncidentsRoute = DashboardIncidentsRouteImport.update({
+  id: '/incidents',
+  path: '/incidents',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardHorairesRoute = DashboardHorairesRouteImport.update({
+  id: '/horaires',
+  path: '/horaires',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardEtudiantsRoute = DashboardEtudiantsRouteImport.update({
+  id: '/etudiants',
+  path: '/etudiants',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardBusRoute = DashboardBusRouteImport.update({
+  id: '/bus',
+  path: '/bus',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardAffectationsRoute = DashboardAffectationsRouteImport.update({
+  id: '/affectations',
+  path: '/affectations',
+  getParentRoute: () => DashboardRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/dashboard/affectations': typeof DashboardAffectationsRoute
+  '/dashboard/bus': typeof DashboardBusRoute
+  '/dashboard/etudiants': typeof DashboardEtudiantsRoute
+  '/dashboard/horaires': typeof DashboardHorairesRoute
+  '/dashboard/incidents': typeof DashboardIncidentsRoute
+  '/dashboard/lignes': typeof DashboardLignesRoute
+  '/dashboard/stations': typeof DashboardStationsRoute
+  '/dashboard/trajets': typeof DashboardTrajetsRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard/affectations': typeof DashboardAffectationsRoute
+  '/dashboard/bus': typeof DashboardBusRoute
+  '/dashboard/etudiants': typeof DashboardEtudiantsRoute
+  '/dashboard/horaires': typeof DashboardHorairesRoute
+  '/dashboard/incidents': typeof DashboardIncidentsRoute
+  '/dashboard/lignes': typeof DashboardLignesRoute
+  '/dashboard/stations': typeof DashboardStationsRoute
+  '/dashboard/trajets': typeof DashboardTrajetsRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/dashboard/affectations': typeof DashboardAffectationsRoute
+  '/dashboard/bus': typeof DashboardBusRoute
+  '/dashboard/etudiants': typeof DashboardEtudiantsRoute
+  '/dashboard/horaires': typeof DashboardHorairesRoute
+  '/dashboard/incidents': typeof DashboardIncidentsRoute
+  '/dashboard/lignes': typeof DashboardLignesRoute
+  '/dashboard/stations': typeof DashboardStationsRoute
+  '/dashboard/trajets': typeof DashboardTrajetsRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/dashboard'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/dashboard/affectations'
+    | '/dashboard/bus'
+    | '/dashboard/etudiants'
+    | '/dashboard/horaires'
+    | '/dashboard/incidents'
+    | '/dashboard/lignes'
+    | '/dashboard/stations'
+    | '/dashboard/trajets'
+    | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/dashboard'
-  id: '__root__' | '/' | '/auth' | '/dashboard'
+  to:
+    | '/'
+    | '/auth'
+    | '/dashboard/affectations'
+    | '/dashboard/bus'
+    | '/dashboard/etudiants'
+    | '/dashboard/horaires'
+    | '/dashboard/incidents'
+    | '/dashboard/lignes'
+    | '/dashboard/stations'
+    | '/dashboard/trajets'
+    | '/dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/dashboard/affectations'
+    | '/dashboard/bus'
+    | '/dashboard/etudiants'
+    | '/dashboard/horaires'
+    | '/dashboard/incidents'
+    | '/dashboard/lignes'
+    | '/dashboard/stations'
+    | '/dashboard/trajets'
+    | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
-  DashboardRoute: typeof DashboardRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -82,13 +198,104 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/trajets': {
+      id: '/dashboard/trajets'
+      path: '/trajets'
+      fullPath: '/dashboard/trajets'
+      preLoaderRoute: typeof DashboardTrajetsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/stations': {
+      id: '/dashboard/stations'
+      path: '/stations'
+      fullPath: '/dashboard/stations'
+      preLoaderRoute: typeof DashboardStationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/lignes': {
+      id: '/dashboard/lignes'
+      path: '/lignes'
+      fullPath: '/dashboard/lignes'
+      preLoaderRoute: typeof DashboardLignesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/incidents': {
+      id: '/dashboard/incidents'
+      path: '/incidents'
+      fullPath: '/dashboard/incidents'
+      preLoaderRoute: typeof DashboardIncidentsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/horaires': {
+      id: '/dashboard/horaires'
+      path: '/horaires'
+      fullPath: '/dashboard/horaires'
+      preLoaderRoute: typeof DashboardHorairesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/etudiants': {
+      id: '/dashboard/etudiants'
+      path: '/etudiants'
+      fullPath: '/dashboard/etudiants'
+      preLoaderRoute: typeof DashboardEtudiantsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/bus': {
+      id: '/dashboard/bus'
+      path: '/bus'
+      fullPath: '/dashboard/bus'
+      preLoaderRoute: typeof DashboardBusRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/affectations': {
+      id: '/dashboard/affectations'
+      path: '/affectations'
+      fullPath: '/dashboard/affectations'
+      preLoaderRoute: typeof DashboardAffectationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
+
+interface DashboardRouteChildren {
+  DashboardAffectationsRoute: typeof DashboardAffectationsRoute
+  DashboardBusRoute: typeof DashboardBusRoute
+  DashboardEtudiantsRoute: typeof DashboardEtudiantsRoute
+  DashboardHorairesRoute: typeof DashboardHorairesRoute
+  DashboardIncidentsRoute: typeof DashboardIncidentsRoute
+  DashboardLignesRoute: typeof DashboardLignesRoute
+  DashboardStationsRoute: typeof DashboardStationsRoute
+  DashboardTrajetsRoute: typeof DashboardTrajetsRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardAffectationsRoute: DashboardAffectationsRoute,
+  DashboardBusRoute: DashboardBusRoute,
+  DashboardEtudiantsRoute: DashboardEtudiantsRoute,
+  DashboardHorairesRoute: DashboardHorairesRoute,
+  DashboardIncidentsRoute: DashboardIncidentsRoute,
+  DashboardLignesRoute: DashboardLignesRoute,
+  DashboardStationsRoute: DashboardStationsRoute,
+  DashboardTrajetsRoute: DashboardTrajetsRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
-  DashboardRoute: DashboardRoute,
+  DashboardRoute: DashboardRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
